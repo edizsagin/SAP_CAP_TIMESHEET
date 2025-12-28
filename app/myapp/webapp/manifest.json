@@ -1,0 +1,252 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "myapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "2c7bf2d1-600d-4218-91ff-b4188cd74495"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/timesheet/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.143.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.fe.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "myapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupId": "$auto",
+          "updateGroupId": "$auto"
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ActivitiesList",
+          "target": "ActivitiesList"
+        },
+        {
+          "pattern": "Activities({key}):?query:",
+          "name": "ActivitiesObjectPage",
+          "target": "ActivitiesObjectPage"
+        }
+      ],
+      "targets": {
+        "ActivitiesList": {
+          "type": "Component",
+          "id": "ActivitiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Activities",
+              "navigation": {
+                "Activities": {
+                  "detail": {
+                    "route": "ActivitiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "enableExport": true,
+                    "selectionMode": "Multi",
+                    "disableCopyToClipboard": true,
+                    "enableMassEdit": false,
+                    "selectAll": false,
+                    "widthIncludingColumnHeader": true,
+                    "creationMode": {},
+                    "personalization": {}
+                  },
+                  "columns": {
+                    "DataField::hours": {
+                      "availability": "Hidden",
+                      "width": "1rem"
+                    },
+                    "DataField::description": {
+                      "width": "7rem"
+                    },
+                    "DataField::rejectionComment": {
+                      "width": "7rem"
+                    },
+                    "DataField::hoursText": {
+                      "width": "7rem"
+                    },
+                    "DataField::createdBy": {
+                      "width": "7rem"
+                    },
+                    "DataField::company_companyCode": {
+                      "width": "7rem"
+                    },
+                    "DataField::pers_ID": {
+                      "width": "11rem"
+                    },
+                    "DataField::status_code": {
+                      "width": "8rem"
+                    }
+                  }
+                },
+                "/ApproverWorkList/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                  "tableSettings": {
+                    "enableExport": true,
+                    "selectionMode": "Multi",
+                    "widthIncludingColumnHeader": true,
+                    "quickVariantSelection": {
+                      "showCounts": true,
+                      "paths": [
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#Pending"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#Approved"
+                        },
+                        {
+                          "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#Rejected"
+                        }
+                      ]
+                    },
+                    "type": "GridTable"
+                  },
+                  "columns": {
+                    "DataField::createdBy": {
+                      "width": "7rem"
+                    },
+                    "DataField::rejectionComment": {
+                      "width": "7rem"
+                    },
+                    "DataField::description": {
+                      "width": "7rem"
+                    },
+                    "DataField::hoursText": {
+                      "width": "7rem"
+                    },
+                    "DataField::status_code": {
+                      "width": "7rem"
+                    },
+                    "DataField::pers_ID": {
+                      "width": "11rem"
+                    },
+                    "DataField::company_companyCode": {
+                      "width": "7rem"
+                    },
+                    "DataField::DisplayActNo": {
+                      "width": "6rem"
+                    },
+                    "DataField::ActNo": {
+                      "width": "8rem"
+                    }
+                  }
+                }
+              },
+              "views": {
+                "paths": [
+                  {
+                    "key": "tableView",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                  },
+                  {
+                    "key": "tableView1",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                    "entitySet": "ApproverWorkList"
+                  }
+                ],
+                "showCounts": true
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "ActivitiesObjectPage": {
+          "type": "Component",
+          "id": "ActivitiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Activities"
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {}
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {}
+  }
+}

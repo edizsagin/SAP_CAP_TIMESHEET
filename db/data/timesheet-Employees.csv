@@ -1,0 +1,4 @@
+ID,fullName,isActive,email,phone,address,city,country,manager,position,level,createdAt,createdBy,modifiedAt,modifiedBy
+123,Michael Thompson,true,michael.thompson@corp-example.com,+1-415-555-0198,245 Market Street,San Francisco,USA,Emma Wilson,Senior SAP Consultant,Senior,2023-11-12T09:15:00Z,system,2024-03-18T14:22:00Z,system
+456,Sophia Martinez,true,sophia.martinez@corp-example.com,+34-91-555-2234,Calle Gran Via 42,Madrid,Spain,Michael Thompson,Functional Analyst,Mid,2023-12-05T10:40:00Z,system,2024-02-28T11:05:00Z,system
+789,Daniel Fischer,true,daniel.fischer@corp-example.com,+49-30-555-7788,Friedrichstraße 88,Berlin,Germany,Michael Thompson,ABAP Developer,Junior,2024-01-22T08:55:00Z,system,2024-01-22T08:55:00Z,system

@@ -1,0 +1,5 @@
+code,criticality,name
+I,5,Initial
+P,2,Pending
+A,3,Approved
+R,1,Rejected

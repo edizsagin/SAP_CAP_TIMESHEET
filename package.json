@@ -1,0 +1,75 @@
+{
+  "name": "timesheet",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap/cds": "^9",
+    "cds-numberrange-plugin": "^1.0.1",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
+        }
+      },
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "123": {
+            "password": "1234",
+            "roles": [
+              "Creator"
+            ]
+          },
+          "456": {
+            "password": "1234",
+            "roles": [
+              "Creator"
+            ]
+          },
+          "789": {
+            "password": "1234",
+            "roles": [
+              "Manager"
+            ]
+          }
+        }
+      }
+    },
+    "cds-numberrange-plugin": {
+      "ranges": [
+        {
+          "name": "ACT_RANGE",
+          "start": 1,
+          "increment": 1,
+          "createOnDraft": true,
+          "additionalProperties": {
+            "prefix": "ACT-",
+            "padCount": 4,
+            "padValue": "0"
+          }
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-timesheet": "cds watch --open timesheet/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-myapp": "cds watch --open myapp/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/timesheet",
+    "app/myapp"
+  ]
+}
