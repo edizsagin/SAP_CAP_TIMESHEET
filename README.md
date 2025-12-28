@@ -1,25 +1,21 @@
-# Getting Started
+SAP_CAP_TIMESHEET
 
-Welcome to your new project.
+A sample Timesheet application built with SAP CAP (Node.js) and SAP Fiori elements.
+This project is implemented using a pure Fiori elements approach without any controller extensions or freestyle UI development.
 
-It contains these folders and files, following our recommended project layout:
-
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+#Description
+This application demonstrates a simple Timesheet scenario where users can create and manage activity records, and managers can review and approve or reject those records.
+Both CRUD operations and the approval process are handled within a single Fiori elements application.
 
 
-## Next Steps
+# Main Capabilities
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+Timesheet Management
+- Create, update, and delete timesheet activities
+- Maintain work date, time range, company, and description
+- Automatically calculated total working hours
 
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+Approval Process
+- Dedicated Approver Page within the same application
+- Approve or reject timesheet entries
+- Status handling with Pending, Approved, and Rejected states
